@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+
+  # get 'static_pages/home' (which is an url, replaced by controller#action pair:)
+  root 'static_pages#home'
 
   get 'static_pages/help'
 
