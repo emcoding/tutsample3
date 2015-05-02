@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+#disabled after Adding Index to email db
+# one:
+#   name: MyString
+#   email: MyString
+#
+# two:
+#   name: MyString
+#   email: MyString
