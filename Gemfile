@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
+#Adding bcrypt in ch6 [hash function to prevent hacking in password db]
+gem 'bcrypt', '3.1.7'
+
+
 
 #Adding Bootstrap in ch5
 gem 'bootstrap-sass', '3.2.0.0'
