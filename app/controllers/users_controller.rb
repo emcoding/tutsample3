@@ -14,7 +14,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      #handle this
+      #Adding redirect following signup form submission
+      #redirect_to user_url(@user) is in short:
+      flash[:success] = "Welcome to Mauds Rails App :-) "
+      redirect_to @user
+
     else
       render 'new'
     end

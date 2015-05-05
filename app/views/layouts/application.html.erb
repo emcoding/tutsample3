@@ -18,7 +18,12 @@
     <%= render 'layouts/header' %>
 
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %> </div>
+      <% end %>
+
       <%= yield %>
+
       <%= render 'layouts/footer' %>
       <!-- adding in ch 7, using the built in debug method to add debug info
       to homepage (with layout in css-file): -->
