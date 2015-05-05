@@ -1,0 +1,14 @@
+<!-- adding in ch 7 Shared dir for partials showing error_messages, available in different views -->
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class = "alert alert_danger">
+      The form contains <%= pluralize(@user.errors.count, "error") %>.
+    </div>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
