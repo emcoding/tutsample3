@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  #Ch 8 Adding Login procedure
+  #don't need this; only named routes for loginfeature
+  #get 'sessions/new'
+
+  #Added in ch 7 for user's pages
   get 'users/new'
 
   # get 'static_pages/home' (which is an url) replaced by controller#action pair:)
@@ -12,7 +17,13 @@ Rails.application.routes.draw do
   get 'contact' =>  'static_pages#contact'
 
   get 'signup'  =>  'users#new'
-  #Added in ch 7 for user's pages
+
+  #Adding in ch 8 : named routes for login
+  get 'login'   =>  'sessions#new'
+  post 'login'  =>  'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+  
   resources :users
 
 end
