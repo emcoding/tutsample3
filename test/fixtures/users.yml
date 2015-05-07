@@ -8,3 +8,9 @@
 # two:
 #   name: MyString
 #   email: MyString
+
+#enabled in ch8.2.4 after adding digest method in models/user.rb
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
