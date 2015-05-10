@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false}
 
   has_secure_password
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
 
   #Added in ch8.2.4 : adding a digest method for use in fixtures
   def User.digest(string)
