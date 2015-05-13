@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   #adding in 9.2.1 : only logged in user can edit, update, with def logged_in_user below
 before_action :logged_in_user, only: [:edit, :update]
+  #adding in 9.2.2
+before_action :correct_user, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -29,11 +31,11 @@ before_action :logged_in_user, only: [:edit, :update]
   end
 
   def edit
-    @user = User.find(params[:id]) #why not: show @user
+  #  @user = User.find(params[:id]) #why not: show @user
   end
 
   def update
-    @user = User.find(params[:id])
+  #  @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Your profile is updated :-) "
       redirect_to @user
@@ -60,4 +62,9 @@ before_action :logged_in_user, only: [:edit, :update]
       end
     end
 
+    def correct_user
+      @user = User.find(params[:id])
+      #redirect_to(root_url) unless @user == current_user
+      redirect_to(root_url) unless current_user?(@user)
+    end
 end

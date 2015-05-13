@@ -12,6 +12,12 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+  #adding in listing 9.24. (returns true if the given user is the correct user)
+  #Not sure if this is right? :
+  def current_user?(user)
+    user == current_user
+  end
+
 
   def current_user
     if (user_id = session[:user_id])
