@@ -7,6 +7,9 @@ gem 'rails', '4.2.1'
 gem 'bcrypt', '3.1.7'
 # Adding in ch9 for sample users
 gem 'faker', '1.4.2'
+#Adding in 9.3.3 for pagination
+gem 'will_paginate', '3.0.7'
+gem 'bootstrap-will_paginate', '0.0.10'
 
 
 #Adding Bootstrap in ch5
