@@ -5,7 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 #Adding bcrypt in ch6 [hash function to prevent hacking in password db]
 gem 'bcrypt', '3.1.7'
-
+# Adding in ch9 for sample users
+gem 'faker', '1.4.2'
 
 
 #Adding Bootstrap in ch5
