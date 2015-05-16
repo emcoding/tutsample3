@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   #adding in 9.2.1 : only logged in user can edit, update, with def logged_in_user below
-before_action :logged_in_user, only: [:index, :edit, :update]
+before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]
   #adding in 9.2.2
-before_action :correct_user, only: [:edit, :update]
+before_action :correct_user,    only: [:edit, :update]
+before_action :admin_user,      only: :destroy
+
 
 
   def index
@@ -50,6 +52,11 @@ before_action :correct_user, only: [:edit, :update]
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:succes] = "User deleted"
+    redirect_to users_url
+  end
 
 
   private
@@ -73,5 +80,9 @@ before_action :correct_user, only: [:edit, :update]
       @user = User.find(params[:id])
       #redirect_to(root_url) unless @user == current_user
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
