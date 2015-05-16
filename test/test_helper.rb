@@ -19,7 +19,8 @@ class ActiveSupport::TestCase
     if integration_test?
       post login_path, session:  {  email:   user.email,
                                     password: password,
-                                    remember_me: remember_me }
+                                    remember_me: remember_me,
+                                    admin: true } #adding for exercise
     else
       session[:user_id] = user.id
     end

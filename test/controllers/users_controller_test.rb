@@ -45,6 +45,22 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_url
   end
 
+  #exercise 9 3e
+  test "should not allow the admin attribute to be edited via the web" do
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+
+    patch :update, id: @other_user, user: {password: "passme",
+                                            password_confirmation: "passme",
+                                            admin: true }
+
+    assert_not @other_user.reload.admin?
+
+    #assert_not @other_user.admin?
+    #puts @other_user.admin
+  end
+
+
   test "should redirect destroy when not logged in" do
     assert_no_difference 'User.count' do
       delete :destroy, id: @user
