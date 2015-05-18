@@ -26,13 +26,16 @@ before_action :admin_user,      only: :destroy
     @user = User.new(user_params)
     if @user.save
       #added in ch8.2.5 :
-      log_in @user
+      #changed in ch10.21
+      #log_in @user
 
       #Adding redirect following signup form submission
       #redirect_to user_url(@user) is in short:
-      flash[:success] = "Welcome to Mauds Rails App :-) "
-      redirect_to @user
-
+      #flash[:success] = "Welcome to Mauds Rails App :-) "
+      #redirect_to @user
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Check your email to activate your account"
+      redirect_to root_url
     else
       render 'new'
     end
